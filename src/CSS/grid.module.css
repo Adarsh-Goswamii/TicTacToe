@@ -1,0 +1,33 @@
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    margin: 40px 0px;
+    display: grid;
+    grid-gap: 10px;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--dark);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.cell {
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s ease;
+}
+
+.cell:hover {
+    background-color: #4DF5D9;
+}
+
+.image {
+    width: 60%;
+    height: 60%;
+}

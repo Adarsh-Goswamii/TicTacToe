@@ -5,6 +5,7 @@ import Info from '../Components/Info';
 import Timer from '../Components/Timer';
 import styles from '../CSS/app.module.css'
 import Choose from '../Components/Choose';
+import Grid from '../Components/Grid';
 
 function App() {
   const [levelChosen, setLevelChosen]= useState(false);
@@ -13,7 +14,7 @@ function App() {
     <div >
       <Header></Header>
       <div className={styles.hero}>
-        { levelChosen? <Level></Level>: <Choose />}
+        <Grid n={5}></Grid>
         <Timer></Timer>
       </div>
 

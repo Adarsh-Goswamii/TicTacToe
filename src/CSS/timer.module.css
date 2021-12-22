@@ -37,6 +37,7 @@
     font-family: black;
     font-size: 36px;
     color: white;
+    margin-bottom: 32px;
 }
 
 .btn_container {
@@ -50,4 +51,5 @@
     font-size: 28px;
     font-family: semibold;
     color: white;
+    margin: 32px 0px;
 }
