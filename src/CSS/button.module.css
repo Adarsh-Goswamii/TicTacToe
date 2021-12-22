@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    height: fit-content;
+    outline: none;
+    border: 0px;
+    padding: 12px 44px;
+    background-color: transparent;
+    font-family: semibold;
+    font-size: 16px;
+    border-radius: 30px;
+    color: white;
+    box-shadow: 
+     -5px -5px 20px #4DF5D9,
+      5px 5px 20px #136B60; 
+}
+
+.container:active {
+    box-shadow: 
+     inset -4px -4px 16px #4DF5D9,
+     inset 4px 4px 16px #136B60; 
+}
+

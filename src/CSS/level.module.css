@@ -1,0 +1,23 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 36px 50px;
+    color: white;
+}
+
+.heading {
+    font-family: black;
+}
+
+.level {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    margin: 24px 0px;
+    align-items: center;
+}
+
+.para {
+    margin-left: 32px;
+}
