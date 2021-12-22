@@ -30,7 +30,7 @@ const App= () => {
       <div className={styles.hero}>
         {
           _level? 
-          <Level />
+          <Level/>
           :
           _weapon? 
           <Choose />
@@ -41,7 +41,7 @@ const App= () => {
           _level || _weapon?
           <Info />
           :
-          <Timer />
+          <Timer time={_size=== 3? 60: _size=== 4? 120: 180}/>
         }
       </div>
     </div>

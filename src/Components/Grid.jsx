@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from './Container';
 import styles from '../CSS/grid.module.css';
 import Cell from './Cell';
+import { useSelector } from 'react-redux';
 
 const Grid = (props) => {
-    console.log(props.n);
-
     let list = [];
     let width= props.n=== 5? "80px": "100px";
     for (let i = 1; i <= props.n; i++) {
         for (let j = 1; j <= props.n; j++) {
-            list.push(<Cell row={i} col={j} width={width}/>)
+            list.push(<Cell row={i} col={j} width={width} />)
         }
     }
 

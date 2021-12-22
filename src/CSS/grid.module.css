@@ -23,7 +23,7 @@
     transition: 0.3s ease;
 }
 
-.cell:hover {
+.enable:hover {
     background-color: #4df5d9;
 }
 

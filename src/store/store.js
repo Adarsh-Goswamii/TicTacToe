@@ -7,7 +7,10 @@ const slice = createSlice({
         weapon: false, 
         size: 3, 
         grid: [], 
-        playerWeapon: "cross"
+        playerWeapon: "cross", 
+        playerTurn: true, 
+        timer: -1, 
+        time: 60
     },
 
     reducers: {
@@ -34,6 +37,23 @@ const slice = createSlice({
         setPlayerWeapon(state, action) {
             console.log(action.payload);
             state.playerWeapon= action.payload;
+        }, 
+        toggleTurn(state) {
+            state.playerTurn= !state.playerTurn
+        }, 
+        setTimer(state, action) {
+            console.log(action.payload);
+            state.timer= action.payload;
+        }, 
+        deleteTimer(state) {
+            clearInterval(state.timer);
+            state.timer= -1;
+        },
+        decreaseTime(state) {
+            state.time= state.time-1;
+        }, 
+        setTime(state, action) {
+            state.time= action.payload;
         }
     }
 })
