@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Header from '../Components/Header';
 import Level from '../Components/Level';
 import Info from '../Components/Info';
+import Timer from '../Components/Timer';
 import styles from '../CSS/app.module.css'
 import Choose from '../Components/Choose';
 
@@ -13,7 +14,7 @@ function App() {
       <Header></Header>
       <div className={styles.hero}>
         { levelChosen? <Level></Level>: <Choose />}
-        <Info></Info>
+        <Timer></Timer>
       </div>
 
     </div>
