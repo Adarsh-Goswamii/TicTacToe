@@ -4,6 +4,8 @@ import styles from '../CSS/grid.module.css';
 import Cell from './Cell';
 
 const Grid = (props) => {
+    console.log(props.n);
+
     let list = [];
     let width= props.n=== 5? "80px": "100px";
     for (let i = 1; i <= props.n; i++) {

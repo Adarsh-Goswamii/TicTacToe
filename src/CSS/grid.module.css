@@ -20,11 +20,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: .3s ease;
+    transition: 0.3s ease;
 }
 
 .cell:hover {
-    background-color: #4DF5D9;
+    background-color: #4df5d9;
 }
 
 .image {

@@ -33,7 +33,7 @@
     border-radius: 20px;
 }
 
-.card:active {
+.active {
     box-shadow: 
      inset -10px -10px 20px #4DF5D9,
      inset 10px 10px 20px #136B60; 
