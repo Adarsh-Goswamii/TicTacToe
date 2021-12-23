@@ -40,26 +40,26 @@ export const cellClicked = (row, col, _dispatch, _grid, weapon) => {
 
         let result = botBrain(grid, weapon);
         console.log(result);
-        if(result.winner) {
+        if (result.winner) {
             // user has already won
             _dispatch(actions.setConclusion("WON"));
             return;
-        } else if(result.botWin) {
+        } else if (result.botWin) {
             // bot will win with next step.
             _dispatch(actions.setConclusion("LOST"));
             return;
-        } else if(result.index[0]!== -1) {
+        } else if (result.index[0] !== -1) {
             // we can block users winning move.
-            _dispatch(actions.setGridState({"row": result.index[0], "col": result.index[1], "value": (weapon=== 'cross'? 'circle': 'cross')}));
+            _dispatch(actions.setGridState({ "row": result.index[0], "col": result.index[1], "value": (weapon === 'cross' ? 'circle' : 'cross') }));
         } else {
-            // fill the last cell. 
-            _dispatch(actions.setGridState({"row": result.random[0], "col": result.random[1], "value": (weapon=== 'cross'? 'circle': 'cross')}));
-
             // conclude the match as a draw
-            if(result.filled) {
+            if (result.filled) {
                 _dispatch(actions.setConclusion("DRAW"));
                 return;
-            } 
+            }
+
+            // fill the last cell. 
+            _dispatch(actions.setGridState({ "row": result.random[0], "col": result.random[1], "value": (weapon === 'cross' ? 'circle' : 'cross') }));
         }
 
         // run some code add bot's move
@@ -74,23 +74,23 @@ export const cellClicked = (row, col, _dispatch, _grid, weapon) => {
 function botBrain(grid, weapon) {
     let bot = weapon === 'cross' ? 1 : 2;
     let player = weapon === 'cross' ? 2 : 1;
-    let ret = { winner: false, botWin: false, index: [-1, -1], filled: false, random: [-1, -1]};
+    let ret = { winner: false, botWin: false, index: [-1, -1], filled: false, random: [-1, -1] };
     let emptySpace = [], n = grid.length;
 
     for (let i = 1; i < n; i++) {
         let map = [0, 0, 0];
         for (let j = 1; j < n; j++) {
-            if (grid[i][j] === -1) {map[0]++; emptySpace.push([i, j]);}
+            if (grid[i][j] === -1) { map[0]++; emptySpace.push([i, j]); }
             else if (grid[i][j] === 1) map[1]++;
             else map[2]++;
         }
 
         if (map[player] === n - 1) ret.winner = true;
-        if (map[bot] === n - 2 && map[0]=== 1) ret.botWin = true;
-        if (map[player]=== n-2 && map[0]=== 1) { 
+        if (map[bot] === n - 2 && map[0] === 1) ret.botWin = true;
+        if (map[player] === n - 2 && map[0] === 1) {
             for (let j = 1; j < n; j++) {
-                if(grid[i][j]!= player) {
-                    ret.index= [i, j];
+                if (grid[i][j] != player) {
+                    ret.index = [i, j];
                     break;
                 }
             }
@@ -106,11 +106,11 @@ function botBrain(grid, weapon) {
         }
 
         if (map[player] === n - 1) ret.winner = true;
-        if (map[bot] === n - 2 && map[0]=== 1) ret.botWin = true;
-        if (map[player]=== n-2  && map[0]=== 1) { 
+        if (map[bot] === n - 2 && map[0] === 1) ret.botWin = true;
+        if (map[player] === n - 2 && map[0] === 1) {
             for (let j = 1; j < n; j++) {
-                if(grid[j][i]!= player) {
-                    ret.index= [j, i];
+                if (grid[j][i] != player) {
+                    ret.index = [j, i];
                     break;
                 }
             }
@@ -125,11 +125,11 @@ function botBrain(grid, weapon) {
     }
 
     if (map[player] === n - 1) ret.winner = true;
-    if (map[bot] === n - 2 && map[0]=== 1) ret.botWin = true;
-    if (map[player]=== n-2  && map[0]=== 1) { 
+    if (map[bot] === n - 2 && map[0] === 1) ret.botWin = true;
+    if (map[player] === n - 2 && map[0] === 1) {
         for (let j = 1; j < n; j++) {
-            if(grid[j][j]!= player) {
-                ret.index= [j, j];
+            if (grid[j][j] != player) {
+                ret.index = [j, j];
                 break;
             }
         }
@@ -143,19 +143,22 @@ function botBrain(grid, weapon) {
     }
 
     if (map[player] === n - 1) ret.winner = true;
-    if (map[bot] === n - 2 && map[0]=== 1) ret.botWin = true;
-    if (map[player]=== n-2  && map[0]=== 1) { 
-        for (let i = n-1; i > 0; i--) {
-            if(grid[n - i][i]!= player) {
-                ret.index= [n-i, i];
+    if (map[bot] === n - 2 && map[0] === 1) ret.botWin = true;
+    if (map[player] === n - 2 && map[0] === 1) {
+        for (let i = n - 1; i > 0; i--) {
+            if (grid[n - i][i] != player) {
+                ret.index = [n - i, i];
                 break;
             }
         }
     }
 
-    ret.filled= emptySpace.length=== 1;
-    let temp= Math.floor(Math.random()* emptySpace.length);
-    ret.random= emptySpace[temp];
+    ret.filled = emptySpace.length <= 1;
+    let temp;
+    if (!ret.filled) {
+        temp = Math.floor(Math.random() * emptySpace.length);
+        ret.random = emptySpace[temp];
+    }
 
     return ret;
 }

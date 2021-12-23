@@ -10,9 +10,10 @@ const Cell= (props) => {
     const [weapon, setWeapon]= useState(undefined);
     const [grid, setGrid]= useState(undefined);
     let dispatch= useDispatch();
-    let { playerWeapon, grid: _grid, conclusion }= useSelector(state=> state.state);
+    let { playerWeapon, grid: _grid, conclusion, playerTurn }= useSelector(state=> state.state);
 
     function onClickHandler() {
+        if(!playerTurn) return;
         cellClicked(props.row, props.col, dispatch, grid, playerWeapon)();
     }
 
@@ -39,8 +40,9 @@ const Cell= (props) => {
 
     return (
         <div className={`${styles.cell} ${enabled? styles.enable: ""}` } 
-        style={{width: props.width, height: props.width}}
+        style={{maxWidth: props.width, maxHeight: props.width}}
         onClick={()=> {
+
             onClickHandler();
         }}>
             {display? <img className={styles.image} src={`${weapon}.svg`} alt="" /> : <></>}

@@ -2,8 +2,33 @@
     width: 100%;
     height: 100%;
 
-    padding: 64px;
+    padding: 100px 64px;
     display: grid;
     grid-template-columns: 6fr 4fr;
     grid-gap: 44px;
+}
+
+
+@media only screen and (max-width: 1280px) {
+
+}
+
+@media only screen and (max-width: 1024px) {
+    .hero {
+        display: flex;
+        flex-direction: column-reverse;
+        
+    }
+}
+
+@media only screen and (max-width: 832px) {
+   .hero {
+    padding: 100px 36px;
+   }   
+}
+
+@media only screen and (max-width: 640px) {
+   .hero {
+    padding: 100px 24px;
+   }
 }

@@ -6,6 +6,7 @@
     align-items: center;
     margin: 36px 50px;
     color: white;
+    height: fit-content;
 }
 
 .heading {
@@ -28,7 +29,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 24px 36px;
+    padding: 24px;
     color: white;
     border-radius: 20px;
 }
@@ -70,4 +71,48 @@
     display: block;
     font-family: black;
     font-size: 34px;
+}
+
+
+@media only screen and (max-width: 1280px) {
+}
+
+@media only screen and (max-width: 1024px) {
+    .card {
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 832px) {
+    .card {
+        padding: 16px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+   .level {
+       display: flex;
+       flex-direction: column;
+   }
+
+   .para {
+       margin: 32px 0px 0px;
+       text-align: center;   
+   }
+
+   .hero {
+       margin: 40px;
+   }
+
+   .card {
+      width: 140px;
+      height: 140px;
+   }
+
+   .type_container {
+   }
+
+   .hero {
+       margin: 12px;
+   }
 }

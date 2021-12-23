@@ -9,6 +9,7 @@
     font-size: 24px;
     background-color: white;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
 }
 
 .tic {
@@ -21,4 +22,21 @@
 
 .toe {
     color: var(--dark);
+}
+
+
+@media only screen and (max-width: 1280px) {
+    
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 832px) {
+    
+}
+
+@media only screen and (max-width: 640px) {
+   
 }
