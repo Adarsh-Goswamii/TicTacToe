@@ -70,6 +70,11 @@ const slice = createSlice({
             state.playerTurn = true;
             state.timer = -1;
             state.time = 60;
+        }, 
+        resetMatch(state) {
+            state.playerTurn = true;
+            clearInterval(state.timer);
+            state.timer = -1;
         }
     }
 })

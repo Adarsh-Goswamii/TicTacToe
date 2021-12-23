@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import styles from '../CSS/overlay.module.css';
 import { actions } from '../store/store';
-import {onClickConclusion} from '../store/functions';
+import {onClickConclusion, resetMatch} from '../store/functions';
 
 const Popup = () => {
     const [conclusion, setConclusion]= useState(undefined);

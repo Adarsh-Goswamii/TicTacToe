@@ -13,7 +13,7 @@ const Cell= (props) => {
     let { playerWeapon, grid: _grid, conclusion, playerTurn }= useSelector(state=> state.state);
 
     function onClickHandler() {
-        if(!playerTurn) return;
+        if(!playerTurn || grid[props.row][props.col]!== -1) return;
         cellClicked(props.row, props.col, dispatch, grid, playerWeapon)();
     }
 
