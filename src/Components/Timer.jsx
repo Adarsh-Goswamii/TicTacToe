@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../CSS/timer.module.css';
-import { startTimer } from '../store/functions';
+import { checkGrid, startTimer } from '../store/functions';
 import Button from './Button';
 import { actions } from '../store/store';
 
@@ -9,7 +9,7 @@ const Timer = (props) => {
     const [turn, setTurn]= useState(undefined); 
     const [time, setTime]= useState(undefined); 
     let dispatch= useDispatch();
-    let {playerTurn, time: _time}= useSelector(state=> state.state);
+    let {playerTurn, time: _time, grid}= useSelector(state=> state.state);
 
     useEffect(() => {
         dispatch(actions.setTime(props.time));
@@ -21,6 +21,9 @@ const Timer = (props) => {
 
     useEffect(() => {
         setTime(_time);
+        if(time=== 0) {
+            dispatch(actions.setConclusion("DRAW"));
+        }
     }, [_time]);
 
     return (

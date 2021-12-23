@@ -2,37 +2,47 @@ import React, {useEffect, useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import styles from '../CSS/grid.module.css';
-import { cellClicked } from '../store/functions';
+import { cellClicked, checkGrid } from '../store/functions';
 
 const Cell= (props) => {
     const [enabled, setEnabled]= useState(true);
     const [display, setDisplay]= useState(false);
     const [weapon, setWeapon]= useState(undefined);
-    const [timer, setTimer]= useState(undefined);
+    const [grid, setGrid]= useState(undefined);
     let dispatch= useDispatch();
+    let { playerWeapon, grid: _grid, conclusion }= useSelector(state=> state.state);
 
     function onClickHandler() {
-        if(enabled) {
-            setDisplay(true);
-            setEnabled(false);
-        } 
-        cellClicked(props.row, props.col, timer, dispatch)();
+        cellClicked(props.row, props.col, dispatch, grid, playerWeapon)();
     }
-
-    let { playerWeapon, timer: _timer }= useSelector(state=> state.state);
 
     useEffect(()=> {
         setWeapon(playerWeapon);
     }, [playerWeapon]);
 
     useEffect(()=> {
-        setTimer(_timer);
-    }, [_timer]);
+        if(conclusion!== "NOT_CONCLUDED") return;
+        if(_grid[props.row][props.col]=== -1) {
+            setEnabled(true);
+        } else {
+            setEnabled(false);
+            if(_grid[props.row][props.col]=== 1) {
+                setWeapon("circle");
+            } else {
+                setWeapon("cross")
+            }
+            setDisplay(true);
+        }
+        setGrid(_grid);
+
+    }, [_grid]);
 
     return (
         <div className={`${styles.cell} ${enabled? styles.enable: ""}` } 
         style={{width: props.width, height: props.width}}
-        onClick={()=> onClickHandler()}>
+        onClick={()=> {
+            onClickHandler();
+        }}>
             {display? <img className={styles.image} src={`${weapon}.svg`} alt="" /> : <></>}
         </div>
     );
