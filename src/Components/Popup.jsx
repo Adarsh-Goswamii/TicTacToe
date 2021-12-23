@@ -43,7 +43,7 @@ const Lost = () => {
     let dispatch= useDispatch();
     return (
         <div className={styles.message}>
-            <h3>You did well...but better luck next time. </h3>
+            <h3>You Lost...better luck next time. </h3>
             <button onClick={()=> onClickConclusion(dispatch)} className={styles.btn}>{'  Rematch >>'}</button>
         </div>
     );
