@@ -33,10 +33,15 @@ const Timer = (props) => {
                 {`${10 > Math.floor(time  / 60) ? "0" + Math.floor(time  / 60) : Math.floor(time  / 60)} : ${10 > time  % 60 ? "0" + time  % 60 : time  % 60}`}
             </div>
             <h3 className={styles.subheading}>{`${turn? "Your ": "Computer's"} Turn`}</h3>
-            <div className={styles.btn_container}>
-                <Button text="Reset" />
-                <Button text="Quit" />
-            </div>
+            {/* <div className={styles.btn_container}>
+                <Button text="Reset" onClick={()=> {
+                    dispatch(actions.setInitialState());
+                    dispatch(actions.setConclusion("NOT_CONCLUDED"));}} />
+                <Button text="Quit" onClick={()=> {
+                    dispatch(actions.setInitialState());
+                    dispatch(actions.setConclusion("NOT_CONCLUDED"));
+                }}/> */}
+            {/* </div> */}
         </div>
     );
 };
