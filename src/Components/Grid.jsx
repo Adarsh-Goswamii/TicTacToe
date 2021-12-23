@@ -9,7 +9,7 @@ const Grid = (props) => {
     let width= props.n=== 5? "80px": "100px";
     for (let i = 1; i <= props.n; i++) {
         for (let j = 1; j <= props.n; j++) {
-            list.push(<Cell row={i} col={j} width={width} />)
+            list.push(<Cell row={i} col={j} width={width} key={`${i} ${j}`}/>)
         }
     }
 
