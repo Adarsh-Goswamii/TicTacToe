@@ -9,7 +9,7 @@ export function delay(ms) {
 }
 
 export const levelBtnClick = (n, dispatch) => {
-    console.log('btnClicked');
+    // console.log('btnClicked');
     dispatch(actions.toggleLevel());
     dispatch(actions.toggleWeapon());
     dispatch(actions.setSize(n));
@@ -26,7 +26,6 @@ export function onClickConclusion(dispatch) {
 export function resetMatch(size, dispatch) {
     return async(dipatch) => {
         await dispatch(actions.resetMatch());
-        await dispatch(actions.setConclusion('NOT_CONCLUDED'));
         await dispatch(actions.setSize(size));
         await dispatch(actions.setTime(size === 3 ? 60 : size === 4 ? 120 : 180));
         dispatch(actions.setTimer(startTimer(dispatch)));
@@ -49,7 +48,7 @@ export const cellClicked = (row, col, _dispatch, _grid, weapon) => {
         grid[row][col] = weapon === 'cross' ? 2 : 1;
 
         let result = botBrain(grid, weapon);
-        console.log(result);
+        // console.log(result);
         if (result.winner) {
             // user has already won
             _dispatch(actions.setConclusion("WON"));
@@ -73,7 +72,7 @@ export const cellClicked = (row, col, _dispatch, _grid, weapon) => {
         }
 
         // run some code add bot's move
-        console.log("computer made his move");
+        // console.log("computer made his move");
         // swap turn
         await _dispatch(actions.toggleTurn());
         // run the timer again

@@ -25,6 +25,7 @@ const Cell= (props) => {
         if(conclusion!== "NOT_CONCLUDED") return;
         if(_grid[props.row][props.col]=== -1) {
             setEnabled(true);
+            setDisplay(false);
         } else {
             setEnabled(false);
             if(_grid[props.row][props.col]=== 1) {

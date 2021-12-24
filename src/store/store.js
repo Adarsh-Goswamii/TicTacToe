@@ -24,13 +24,16 @@ const slice = createSlice({
         setSize(state, action) {
             state.size = action.payload;
 
+            let new_grid= [];
             for (let i = 0; i <= action.payload; i++) {
                 let temp = [];
                 for (let j = 0; j <= action.payload; j++) {
                     temp.push(-1);
                 }
-                state.grid.push(temp);
+                new_grid.push(temp);
             }
+
+            state.grid= new_grid;
         },
         setGridState(state, action) {
             state.grid[action.payload.row][action.payload.col] = action.payload.value === "cross" ? 2 : 1;
@@ -65,7 +68,6 @@ const slice = createSlice({
             state.level = true;
             state.weapon = false;
             state.size = 3;
-            state.grid = [];
             state.playerWeapon = "cross";
             state.playerTurn = true;
             state.timer = -1;
